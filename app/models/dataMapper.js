@@ -3,7 +3,7 @@ import data from "../models/connect.js";
 const dataMapper = {
   async allCoffees() {
     const coffee = await data.query(
-      `SELECT nom, reference FROM cafes ORDER BY nom`
+      `SELECT nom, reference, disponible FROM cafes ORDER BY nom`
     );
     return coffee.rows;
   },

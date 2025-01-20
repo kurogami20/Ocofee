@@ -2,7 +2,7 @@ const button = document.querySelector(".button_plus");
 let count = 0;
 
 function coffeeApear() {
-  addEventListener("click", cofeeApear);
+  button.addEventListener("click", cofeeApear);
 }
 
 function cofeeApear() {
