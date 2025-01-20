@@ -1,0 +1,27 @@
+.upper_section {
+  display: flex;
+  gap: 1.5rem;
+}
+.upper_section_left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 75%;
+}
+.index_title {
+  font-size: 2.8rem;
+}
+.upper_section_right {
+}
+.upper_section_right_image {
+}
+
+.lower_section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lower_section_main {
+  display: flex;
+  gap: 1.5rem;
+}
