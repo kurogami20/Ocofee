@@ -2,7 +2,31 @@
 
 <body>
   <main class="main">
-    <div class="container"></div>
+    <div class="container">
+      <section class="section">
+        <img
+          src="../../assets/coffees/<%= coffeeSelected.reference %>.png"
+          alt=""
+        />
+        <article class="coffee_product_article">
+          <h1 class="coffee_product_article_title"><%= coffeeSelected.nom%></h1>
+          <p class="coffee_product_article_origine">
+            Origine: <strong><%= coffeeSelected.origine%></strong>
+          </p>
+          <p class="coffee_product_article_caracteristique">
+            Caractéristique:
+            <strong><%= coffeeSelected.caracteristique%></strong>
+          </p>
+          <p class="coffee_product_article_text">
+            Description: <strong><%= coffeeSelected.description%></strong>
+          </p>
+          <p class="coffee_product_article_prix">
+            Prix au kilo: <strong><%= coffeeSelected.prix_kilo%></strong>
+          </p>
+          <button class="button_site">Catalogue</button>
+        </article>
+      </section>
+    </div>
   </main>
 </body>
 
