@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../../css/style.css" />
     <% if (locals.indexStyle) { %>
        <link rel="stylesheet" href="../../../css/index.css" />
+    <% } else if (locals.browsing_pageStyle) { %>
+       <link rel="stylesheet" href="../../../css/browsing_page.css" />
     <% } %>
   </head>
   <body>
@@ -19,8 +21,8 @@
       </div>
       <div class="header_right">
         <ul class="menu_container">
-          <li class="menu_item"><a class="menu_link" href="#">Accueil</a></li>
-          <li class="menu_item"><a class="menu_link" href="#">Catalogue</a></li>
+          <li class="menu_item"><a class="menu_link" href="/">Accueil</a></li>
+          <li class="menu_item"><a class="menu_link" href="/catalogue">Catalogue</a></li>
           <li class="menu_item"><a class="menu_link" href="#">Qui sommes nous ?</a></li>
         </ul>
       </div>

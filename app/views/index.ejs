@@ -18,7 +18,7 @@
           <div class="upper_section_left-buttons_contain">
             <button class="button_site"><a href="#">En savoir plus</a></button>
             <button class="button_site">
-              <a href="#">Voir le catalogue</a>
+              <a href="/catalogue">Voir le catalogue</a>
             </button>
           </div>
         </div>
@@ -33,30 +33,20 @@
       <section class="lower_section">
         <h2 class="index_title">Nos nouveautés</h2>
         <div class="lower_section_main">
+          <% coffee.forEach(cof => { %>
           <article class="coffee_article">
-            <h1 class="coffee_article_title">Expresso</h1>
+            <h1 class="coffee_article_title"><%= cof.nom %></h1>
             <div class="coffee_article_darkener"></div>
             <img
               class="cofee_img"
-              src="../../assets/coffees/100955890.png"
+              src="../../assets/coffees/<%= cof.reference %>.png"
               alt=""
             />
             <button class="button_site coffee_article_button">
               <a href="#">Découvrir</a>
             </button>
           </article>
-          <article class="coffee_article">
-            <h1 class="coffee_article_title">Columbian</h1>
-            <div class="coffee_article_darkener"></div>
-            <img
-              class="cofee_img"
-              src="../../assets/coffees/100955894.png"
-              alt=""
-            />
-            <button class="button_site coffee_article_button">
-              <a href="#">Découvrir</a>
-            </button>
-          </article>
+          <% }) %>
         </div>
       </section>
     </div>

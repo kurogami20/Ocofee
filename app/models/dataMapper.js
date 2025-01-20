@@ -1,5 +1,16 @@
 import data from "../models/connect.js";
 
-const dataMapper = {};
+const dataMapper = {
+  async allCoffees() {
+    const coffee = await data.query(`SELECT * FROM cafes ORDER BY nom`);
+    return coffee.rows;
+  },
+  async newCoffes() {
+    const coffee = await data.query(
+      `SELECT nom, reference FROM cafes ORDER BY id DESC LIMIT 3`
+    );
+    return coffee.rows;
+  },
+};
 
 export default dataMapper;
