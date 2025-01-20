@@ -3,29 +3,32 @@
 <body>
   <main class="main">
     <div class="container">
-      <h2 class="browsing_title">Notre catalogue</h2>
-      <div class="coffee_contain">
-        <% coffees.forEach(cof => { %>
-        <article class="coffee_article">
-          <h1 class="coffee_article_title"><%= cof.nom %></h1>
-          <% if (!cof.disponible) { %>
-          <div class="coffe_dispo not_dispo" title="indisponible"></div>
-          <% } else {%>
-          <div class="coffe_dispo" title="disponible"></div>
-          <% } %>
+      <section class="section">
+        <h2 class="browsing_title">Notre catalogue</h2>
+        <div class="coffee_contain">
+          <% coffees.forEach(cof => { %>
+          <article class="coffee_article">
+            <h1 class="coffee_article_title"><%= cof.nom %></h1>
+            <% if (!cof.disponible) { %>
+            <div class="coffe_dispo not_dispo" title="indisponible"></div>
+            <% } else {%>
+            <div class="coffe_dispo" title="disponible"></div>
+            <% } %>
 
-          <div class="coffee_article_darkener"></div>
-          <img
-            class="cofee_img"
-            src="../../assets/coffees/<%= cof.reference %>.png"
-            alt=""
-          />
-          <button class="button_site coffee_article_button">
-            <a href="#">Découvrir</a>
-          </button>
-        </article>
-        <% }) %>
-      </div>
+            <div class="coffee_article_darkener"></div>
+            <img
+              class="cofee_img"
+              src="../../assets/coffees/<%= cof.reference %>.png"
+              alt=""
+            />
+            <button class="button_site coffee_article_button">
+              <a href="#">Découvrir</a>
+            </button>
+          </article>
+          <% }) %>
+        </div>
+        <button class="button_site button_plus">Voir tout</button>
+      </section>
     </div>
   </main>
 </body>

@@ -13,6 +13,7 @@ const mainController = {
     console.log(coffees);
     res.render("browsing_page.ejs", {
       browsing_pageStyle: "css",
+      browsing_pageJava: "java",
       coffees,
     });
   },

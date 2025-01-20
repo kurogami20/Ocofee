@@ -82,6 +82,7 @@ section {
   z-index: 3;
   left: 1rem;
   top: 1rem;
+  right: 1rem;
 }
 .coffee_article_darkener {
   width: 100%;
