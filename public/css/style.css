@@ -9,6 +9,23 @@ h1,
 h2 {
   color: var(--main_color2);
 }
+.footer {
+  background-color: var(--main_color2);
+  width: 100%;
+  padding: 3rem;
+}
+.footer_nav_contain {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.footer_nav_link {
+  color: var(--main_color);
+  font-size: 1.2rem;
+}
+
 @media (min-width: 480px) {
   /* *header */
   .header {
@@ -302,5 +319,8 @@ h2 {
   .burger_link {
     color: var(--main_color);
     font-size: 1.5rem;
+  }
+  .footer_nav_contain {
+    flex-direction: column;
   }
 }

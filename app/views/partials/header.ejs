@@ -14,7 +14,10 @@
       <link rel="stylesheet" href="../../../css/product.css" />
     <% } else if (locals.whoStyle){%>
       <link rel="stylesheet" href="../../../css/who.css">
-      <% } %>
+      <% } else if (locals.error404Style){%>
+        <link rel="stylesheet" href="../../../css/404.css">
+        <% } %>
+  <% if (locals.error404Style){%><% }else {%>   
   </head>
   <body>
     <header class="header">
@@ -43,3 +46,4 @@
 
     </header>
   
+<% } %>
