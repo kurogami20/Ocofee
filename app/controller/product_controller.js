@@ -7,6 +7,7 @@ const products = {
       const coffeeSelected = await dataMapper.coffeeByRef(ref);
       res.render("product_page.ejs", {
         coffeeSelected,
+        productStyle: "css",
       });
     } catch (error) {
       next();

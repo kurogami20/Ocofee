@@ -17,6 +17,11 @@ const mainController = {
       coffees,
     });
   },
+  displayWho(req, res) {
+    res.render("who_page.ejs", {
+      whoStyle: "css",
+    });
+  },
 };
 
 export default mainController;

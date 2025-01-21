@@ -5,6 +5,7 @@
     <div class="container">
       <section class="section">
         <img
+          class="product_img"
           src="../../assets/coffees/<%= coffeeSelected.reference %>.png"
           alt=""
         />
@@ -23,7 +24,9 @@
           <p class="coffee_product_article_prix">
             Prix au kilo: <strong><%= coffeeSelected.prix_kilo%></strong>
           </p>
-          <button class="button_site">Catalogue</button>
+          <button class="button_site button_product">
+            <a href="/catalogue">Catalogue</a>
+          </button>
         </article>
       </section>
     </div>
