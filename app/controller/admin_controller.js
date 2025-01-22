@@ -22,26 +22,36 @@ const adminController = {
       });
     } else {
       req.session.admin = [];
-      req.session.admin = admin;
+      req.session.admin.push(admin);
       res.redirect("/admin/addCoffee");
     }
   },
 
-  displayAddCoffee(req, res) {
-    res.render("addCoffe.ejs", {
-      adminStyle: "css",
-      adminConnected: req.session.admin,
-    });
+  displayAddCoffee(req, res, next) {
+    const empty = "";
+    const admin = req.session.admin;
+    console.log(admin === empty);
+    if (admin === empty || admin === undefined) {
+      next();
+    } else {
+      res.render("addCoffe.ejs", {
+        adminStyle: "css",
+        adminConnected: req.session.admin,
+      });
+    }
   },
   async AddCoffee(req, res) {
     const coffee = req.body;
+
+    console.log(req.file);
     if (
       coffee.nom === "" ||
       coffee.description === "" ||
       coffee.reference === "" ||
       coffee.origine === "" ||
       coffee.prix_kilo === "" ||
-      coffee.caracteristique === ""
+      coffee.caracteristique === "" ||
+      coffee.coffee_img === ""
     ) {
       res.render("addCoffe.ejs", {
         adminConnected: req.session.admin,
@@ -49,11 +59,14 @@ const adminController = {
       });
     } else {
       dataMapper.addCoffe(coffee);
-      res.redirect(`/produit/${coffee.reference}`);
+      res.render("addCoffe.ejs", {
+        adminConnected: req.session.admin,
+        successMessage: "Café ajouté",
+      });
     }
   },
   logout(req, res) {
-    req.session.admin = [];
+    req.session.admin = "";
     res.redirect("/");
   },
 };

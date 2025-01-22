@@ -8,8 +8,11 @@
       <strong style="color: red" class="errorMessage"
         ><%= errorMessage %></strong
       >
-      <% } %>
-      <form action="" method="post">
+      <% } else if (locals.successMessage){ %>
+      <strong style="color: rgb(41, 184, 5)" class="errorMessage"
+        ><%= successMessage %></strong
+      ><% } %>
+      <form action="" method="post" enctype="multipart/form-data">
         <fieldset class="fieldset">
           <label for="name">
             Nom du café
@@ -44,6 +47,13 @@
           <label for="reference">
             Reference
             <input type="number" name="reference" id="reference" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <label for="">
+            Image du café
+            <input type="file" name="coffee_img" id="coffee_img" />
+            (rappel le nom du fichier image doit être le même que la référence )
           </label>
         </fieldset>
         <button class="button_site" type="submit">Ajouter</button>

@@ -36,17 +36,26 @@
   
   <body>
     <header class="header">
-      <div class="header_left"><a class="link_home" href="/">
+       <% if (locals.adminConnected) { %>
+        <div class="header_left"><a class="link_home" href="/admin/addCoffee">
         <img class="logo" src="../../../assets/favicon.svg" alt="" />
         <h1 class="main_title">Ocoffee</h1>
       </a>
       </div>
+          <% } else { %>
+            <div class="header_left"><a class="link_home" href="/">
+        <img class="logo" src="../../../assets/favicon.svg" alt="" />
+        <h1 class="main_title">Ocoffee</h1>
+      </a>
+      </div>
+          <% } %>
+      
       <div class="header_right">
         <ul class="menu_container">
-          <li class="menu_item"><a class="menu_link" href="/catalogue">Catalogue</a></li>
-          <li class="menu_item"><a class="menu_link" href="/qui_sommes_nous">Qui sommes nous ?</a></li>
+          
           <% if (locals.adminConnected) { %>
-           <li class="menu_item"><a class="menu_link" href="/admin/addCoffee">Ajouter un café</a></li>
+          <% } else { %><li class="menu_item"><a class="menu_link" href="/catalogue">Catalogue</a></li>
+          <li class="menu_item"><a class="menu_link" href="/qui_sommes_nous">Qui sommes nous ?</a></li>
           <% } %>
           
         </ul>
