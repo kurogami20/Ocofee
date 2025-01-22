@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ocoffee</title>
+    <!-- *icon -->
+      <link rel="icon" type="image/x-icon" href="../../../assets/favicon.svg">
+    <!-- *title -->
+     <%  if (locals.browsing_pageStyle) { %>
+      <title>Ocoffee-Catalogue</title>
+    <% } else if (locals.productStyle){%>
+     <title>Ocoffee-produit: <%= coffeeSelected.nom%></title>
+    <% } else if (locals.whoStyle){%>
+       <title>Ocoffee-Qui sommes nous ?</title>
+      <% } else if (locals.error404Style){%>
+       <title>Ocoffee-Erreur 404</title>
+        <% } else {%><title>Ocoffee</title><% } %>
+        <!-- *style -->
     <link rel="stylesheet" href="../../../css/reset.css" />
     <link rel="stylesheet" href="../../../css/style.css" />
     <% if (locals.indexStyle) { %>
@@ -16,13 +28,16 @@
       <link rel="stylesheet" href="../../../css/who.css">
       <% } else if (locals.error404Style){%>
         <link rel="stylesheet" href="../../../css/404.css">
-        <% } %>
+        <% } else if (locals.adminStyle){%>
+          <link rel="stylesheet" href="../../../css/admin.css">
+          <% } %>
+        </head>
   <% if (locals.error404Style){%><% }else {%>   
-  </head>
+  
   <body>
     <header class="header">
       <div class="header_left"><a class="link_home" href="/">
-        <img class="logo" src="../../../assets/logo.svg" alt="" />
+        <img class="logo" src="../../../assets/favicon.svg" alt="" />
         <h1 class="main_title">Ocoffee</h1>
       </a>
       </div>
@@ -30,6 +45,10 @@
         <ul class="menu_container">
           <li class="menu_item"><a class="menu_link" href="/catalogue">Catalogue</a></li>
           <li class="menu_item"><a class="menu_link" href="/qui_sommes_nous">Qui sommes nous ?</a></li>
+          <% if (locals.adminConnected) { %>
+           <li class="menu_item"><a class="menu_link" href="/admin/addCoffee">Ajouter un café</a></li>
+          <% } %>
+          
         </ul>
         <div class="menu_body">
 <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">

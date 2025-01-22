@@ -1,0 +1,30 @@
+<%- include('./partials/header') %>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <% if (locals.errorMessage) { %>
+      <strong style="color: red" class="errorMessage"
+        ><%= errorMessage %></strong
+      >
+      <% } %>
+      <form action="" method="post">
+        <fieldset class="fieldset">
+          <label for="name">
+            Nom d'utilisateur
+            <input type="text" name="name" id="name" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="password">
+            Mot de passe
+            <input type="password" name="password" id="password"
+          /></label>
+        </fieldset>
+        <button class="button_site" type="submit">Se connecter</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<%- include('./partials/footer') %>

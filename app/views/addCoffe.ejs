@@ -1,0 +1,55 @@
+<%- include('./partials/header') %>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <h2>Ajoutez un café</h2>
+      <% if (locals.errorMessage) { %>
+      <strong style="color: red" class="errorMessage"
+        ><%= errorMessage %></strong
+      >
+      <% } %>
+      <form action="" method="post">
+        <fieldset class="fieldset">
+          <label for="name">
+            Nom du café
+            <input type="text" name="nom" id="name" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="origine">
+            Origine du café
+            <input type="text" name="origine" id="origine" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="caracteristique">
+            Caractéristique du café
+            <input type="text" name="caracteristique" id="caracteristique" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="description">
+            Description du café
+            <input type="text" name="description" id="description" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="prix_kilo">
+            Prix au kilo
+            <input type="text" name="prix_kilo" id="prix_kilo" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="reference">
+            Reference
+            <input type="number" name="reference" id="reference" />
+          </label>
+        </fieldset>
+        <button class="button_site" type="submit">Ajouter</button>
+      </form>
+    </div>
+  </main>
+</body>
+
+<%- include('./partials/footer') %>

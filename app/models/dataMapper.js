@@ -20,6 +20,29 @@ const dataMapper = {
     );
     return coffee.rows[0];
   },
+  async admin(name, pass) {
+    const admin = await data.query(
+      `SELECT * FROM cafes_admin WHERE name = $1 and password = $2`,
+      [name, pass]
+    );
+    return admin.rows[0];
+  },
+  async addCoffe(coffee) {
+    const newCoffee = await data.query(
+      `INSERT INTO cafes (nom,description,reference,origine,prix_kilo,caracteristique,disponible) VALUES
+      ($1,$2,$3,$4,$5,$6,true)
+      `,
+      [
+        coffee.nom,
+        coffee.description,
+        coffee.reference,
+        coffee.origine,
+        coffee.prix_kilo,
+        coffee.caracteristique,
+      ]
+    );
+    return newCoffee;
+  },
 };
 
 export default dataMapper;
