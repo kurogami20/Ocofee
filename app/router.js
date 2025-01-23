@@ -38,5 +38,13 @@ router.post(
 router.get("/admin/suppCoffee", adminController.displaySuppCoffee);
 router.get("/suppCoffee/:ref", adminController.suppCoffee);
 
+// *modif coffee
+router.get("/admin/updCoffee", adminController.displayUpdCoffee);
+router.post(
+  "/admin/updCoffee",
+  upload.single("coffee_img"),
+  adminController.UpdCoffee
+);
+
 router.use(error404);
 export default router;

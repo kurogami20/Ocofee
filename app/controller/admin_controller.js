@@ -33,7 +33,7 @@ const adminController = {
     const empty = "";
     const admin = req.session.admin;
     const carac = await dataMapper.allCarac();
-    console.log(admin === empty);
+
     if (admin === empty || admin === undefined) {
       next();
     } else {
@@ -76,13 +76,19 @@ const adminController = {
     }
   },
 
-  async displaySuppCoffee(req, res) {
+  async displaySuppCoffee(req, res, next) {
     const coffees = await dataMapper.allCoffee();
+    const empty = "";
+    const admin = req.session.admin;
 
-    res.render("suppCoffee.ejs", {
-      coffees,
-      adminConnected: req.session.admin,
-    });
+    if (admin === empty || admin === undefined) {
+      next();
+    } else {
+      res.render("suppCoffee.ejs", {
+        coffees,
+        adminConnected: req.session.admin,
+      });
+    }
   },
 
   async suppCoffee(req, res) {
@@ -91,6 +97,58 @@ const adminController = {
     const coffees = await dataMapper.allCoffee();
     dataMapper.deleteCoffee(parseInt(ref));
     res.redirect("/admin/suppCoffee");
+  },
+
+  // *modification
+  async displayUpdCoffee(req, res, next) {
+    const coffees = await dataMapper.allCoffee();
+    const ref = req.query.nameCoffee;
+    const empty = "";
+    const admin = req.session.admin;
+    const carac = await dataMapper.allCarac();
+
+    if (admin === empty || admin === undefined) {
+      next();
+    } else {
+      if (ref !== "" || ref !== undefined) {
+        const coffee = await dataMapper.coffeeByRef(ref);
+
+        if (coffee === undefined) {
+          res.render("updCoffee.ejs", {
+            coffees,
+            coffee,
+            adminConnected: req.session.admin,
+            carac,
+          });
+        } else {
+          const actualCarac = await dataMapper.caracById(
+            coffee.id_caracteristique
+          );
+
+          res.render("updCoffee.ejs", {
+            coffees,
+            coffee,
+            adminConnected: req.session.admin,
+            carac,
+            actualCarac,
+          });
+        }
+      } else {
+        res.render("updCoffee.ejs", {
+          coffees,
+          adminConnected: req.session.admin,
+          carac,
+        });
+      }
+    }
+  },
+
+  UpdCoffee(req, res) {
+    const coffee = req.body;
+    console.log(coffee);
+    const carac = coffee.carac;
+    dataMapper.updCoffe(coffee, parseInt(carac));
+    res.redirect("/admin/updCoffee");
   },
 
   // *déconnexion

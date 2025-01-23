@@ -19,6 +19,13 @@ const dataMapper = {
     );
     return coffee.rows;
   },
+  async caracById(id) {
+    const carac = await data.query(
+      `SELECT * FROM caracteristique WHERE id = $1`,
+      [id]
+    );
+    return carac.rows[0];
+  },
   async allCarac() {
     const carac = await data.query(`SELECT * FROM caracteristique`);
     return carac.rows;
@@ -63,6 +70,22 @@ const dataMapper = {
   async deleteCoffee(ref) {
     const coffee = data.query(`DELETE FROM cafes WHERE reference = $1`, [ref]);
     return coffee;
+  },
+  async updCoffe(coffee, carac) {
+    const newCoffee = await data.query(
+      `UPDATE cafes SET nom = $1, description=$2, origine=$3, prix_kilo=$4, id_caracteristique=$5
+      WHERE reference = $6
+      `,
+      [
+        coffee.nom,
+        coffee.description,
+        coffee.origine,
+        coffee.prix_kilo,
+        carac,
+        coffee.reference,
+      ]
+    );
+    return newCoffee;
   },
 };
 

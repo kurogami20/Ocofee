@@ -1,0 +1,104 @@
+<%- include('./partials/header') %>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <h2>Modifier un café</h2>
+      <!-- *selection du café -->
+      <form action="/admin/updCoffee" method="get">
+        <button type="submit" class="button_site button_select">
+          <select class="select" name="nameCoffee" id="nameCoffee">
+            <option class="option" value="">Choisissez le café</option>
+            <% coffees.forEach(coffee=> { %>
+
+            <option class="option" value="<%= coffee.reference %>">
+              <%= coffee.nom %>
+            </option>
+
+            <% }) %>
+          </select>
+        </button>
+      </form>
+      <% if (locals.coffee) { %>
+
+      <form action="" method="post" enctype="multipart/form-data">
+        <fieldset class="fieldset">
+          <label for="name">
+            Nom du café
+            <input type="text" name="nom" id="" value="<%= coffee.nom %>" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="origine">
+            Origine du café
+            <input
+              type="text"
+              name="origine"
+              id="origine"
+              value="<%= coffee.origine %>"
+            />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="">
+            Choisissez une caractéristique (par défault sur l'actuelle)
+            <select name="carac" id="carac">
+              <option value="<%= actualCarac.id %>">
+                <%= actualCarac.carac_name %>
+              </option>
+              <% carac.forEach(caract=> { %>
+              <option value="<%= caract.id %>"><%= caract.carac_name %></option>
+              <% }) %>
+            </select></label
+          >
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="description">
+            Description du café
+            <textarea type="text" name="description" id="" rows="5">
+<%= coffee.description %></textarea
+            >
+          </label>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label for="prix_kilo">
+            Prix au kilo
+            <input
+              type="text"
+              name="prix_kilo"
+              id=""
+              value="<%= coffee.prix_kilo %>"
+            />
+          </label>
+        </fieldset>
+        <fieldset style="display: none" class="fieldset">
+          <label for="reference">
+            Reference
+            <input
+              type="number"
+              name="reference"
+              id=""
+              value="<%= coffee.reference %>"
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <img
+            src="../../assets/coffees/<%= coffee.reference %>.png"
+            alt="Image acuelle"
+            title="image actuelle"
+          />
+          <label for="">
+            Image du café
+
+            <input type="file" name="coffee_img" id="" />
+          </label>
+        </fieldset>
+        <button class="button_site" type="submit">Modifier</button>
+      </form>
+      <% } %>
+    </div>
+  </main>
+</body>
+
+<%- include('./partials/footer') %>
