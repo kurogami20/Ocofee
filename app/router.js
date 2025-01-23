@@ -5,9 +5,18 @@ import error404 from "./middleware/error/404.js";
 import session from "./middleware/admin_session.js";
 import adminController from "./controller/admin_controller.js";
 import multer from "multer";
+import path from "path";
 
+const storage = multer.diskStorage({
+  destination:
+    "/var/www/html/sigurd/projet MVC/S09-Ocoffee-kurogami20/public/assets/coffees",
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+  path,
+});
 const upload = multer({
-  dest: "/var/www/html/sigurd/projet MVC/S09-Ocoffee-kurogami20/public/assets/coffees",
+  storage: storage,
 });
 
 const router = express.Router();
