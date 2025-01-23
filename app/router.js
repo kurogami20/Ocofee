@@ -4,22 +4,7 @@ import products from "./controller/product_controller.js";
 import error404 from "./middleware/error/404.js";
 import session from "./middleware/admin_session.js";
 import adminController from "./controller/admin_controller.js";
-import multer from "multer";
-import path from "path";
-
-// * parametrage de multer
-const storage = multer.diskStorage({
-  destination:
-    "/var/www/html/sigurd/projet MVC/S09-Ocoffee-kurogami20/public/assets/coffees",
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-  path,
-});
-const upload = multer({
-  storage: storage,
-});
-
+import upload from "./middleware/uloadMulter.js";
 // *les routes
 const router = express.Router();
 
@@ -30,7 +15,7 @@ router.get("/", mainController.displayHome);
 
 // *browsing_page
 router.get("/catalogue", mainController.displayBrowse);
-
+router.post("/catalogue", mainController.displayNewBrowse);
 // *product page
 router.get("/produit/:id", products.displayProduct);
 

@@ -27,10 +27,17 @@
           </label>
         </fieldset>
         <fieldset class="fieldset">
-          <label for="caracteristique">
-            Caractéristique du café
-            <input type="text" name="caracteristique" id="caracteristique" />
-          </label>
+          <label for="">
+            Choisissez une caractéristique
+            <select name="carac" id="carac">
+              <option value="null">aucun</option>
+              <% carac.forEach(caract=> { %>
+              <option type="submit" value="<%= caract.id %>">
+                <%= caract.carac_name %>
+              </option>
+              <% }) %>
+            </select></label
+          >
         </fieldset>
         <fieldset class="fieldset">
           <label for="description">

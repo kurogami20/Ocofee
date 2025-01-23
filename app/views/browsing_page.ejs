@@ -12,6 +12,25 @@
             alt=""
           />
         </div>
+        <form action="" method="get" class="form">
+          <button type="submit" class="button_site">
+            <select
+              class="select"
+              name="carac"
+              id="carac"
+              aria-placeholder="choisissez une caractéristique"
+            >
+              <option class="option" value="">Tous</option>
+              <% carac.forEach(caract=> { %>
+
+              <option class="option" value="<%= caract.id %>">
+                <%= caract.carac_name %>
+              </option>
+
+              <% }) %>
+            </select>
+          </button>
+        </form>
 
         <div class="coffee_contain">
           <% coffees.forEach(cof => { %>

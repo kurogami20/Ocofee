@@ -1,11 +1,27 @@
 import data from "../models/connect.js";
 
 const dataMapper = {
-  async allCoffees() {
+  async allCoffee() {
     const coffee = await data.query(
-      `SELECT nom, reference, disponible FROM cafes ORDER BY nom`
+      `SELECT * FROM cafes
+      ORDER BY nom;`
     );
     return coffee.rows;
+  },
+
+  async allCoffeesByCarac(id) {
+    const coffee = await data.query(
+      `SELECT c.nom, c.reference, c.disponible, t.* 
+      FROM cafes c JOIN caracteristique t ON c.id_caracteristique=t.id
+      WHERE c.id_caracteristique = $1
+      ORDER BY nom;`,
+      [id]
+    );
+    return coffee.rows;
+  },
+  async allCarac() {
+    const carac = await data.query(`SELECT * FROM caracteristique`);
+    return carac.rows;
   },
   async newCoffes() {
     const coffee = await data.query(
@@ -15,7 +31,7 @@ const dataMapper = {
   },
   async coffeeByRef(id) {
     const coffee = await data.query(
-      `SELECT * FROM cafes WHERE reference = $1`,
+      `SELECT c.*, t.carac_name FROM cafes c JOIN caracteristique t on c.id_caracteristique = t.id  WHERE c.reference = $1`,
       [id]
     );
     return coffee.rows[0];
@@ -29,7 +45,7 @@ const dataMapper = {
   },
   async addCoffe(coffee) {
     const newCoffee = await data.query(
-      `INSERT INTO cafes (nom,description,reference,origine,prix_kilo,caracteristique,disponible) VALUES
+      `INSERT INTO cafes (nom,description,reference,origine,prix_kilo,id_caracteristique,disponible) VALUES
       ($1,$2,$3,$4,$5,$6,true)
       `,
       [
@@ -38,7 +54,7 @@ const dataMapper = {
         coffee.reference,
         coffee.origine,
         coffee.prix_kilo,
-        coffee.caracteristique,
+        ref,
       ]
     );
     return newCoffee;

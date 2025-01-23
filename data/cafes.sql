@@ -1,13 +1,13 @@
 BEGIN
 
-DROP TABLE IF EXISTS "caracteristique" ;
+DROP TABLE IF EXISTS "caracteristique" CASCADE;
 
 CREATE TABLE IF NOT EXISTS "caracteristique" (
 "id" SERIAL PRIMARY KEY,
-"nom" TEXT NOT NULL
+"carac_name" TEXT NOT NULL
 );
 
-INSERT INTO "caracteristique" ("nom") VALUES
+INSERT INTO "caracteristique" ("carac_name") VALUES
     ('Corsé'),
     ('Acide'),
     ('Fruité'),
@@ -19,7 +19,7 @@ INSERT INTO "caracteristique" ("nom") VALUES
 
 
 
-DROP TABLE IF EXISTS "cafes";
+DROP TABLE IF EXISTS "cafes" CASCADE;
 
 CREATE TABLE IF NOT EXISTS "cafes" (
    "id" SERIAL PRIMARY KEY,

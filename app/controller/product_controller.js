@@ -5,6 +5,7 @@ const products = {
     const ref = req.params.id;
     try {
       const coffeeSelected = await dataMapper.coffeeByRef(ref);
+      console.log(coffeeSelected);
       res.render("product_page.ejs", {
         coffeeSelected,
         productStyle: "css",

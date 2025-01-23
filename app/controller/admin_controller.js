@@ -29,9 +29,10 @@ const adminController = {
   },
 
   // * on affiche la page pour ajouter des café
-  displayAddCoffee(req, res, next) {
+  async displayAddCoffee(req, res, next) {
     const empty = "";
     const admin = req.session.admin;
+    const carac = await dataMapper.allCarac();
     console.log(admin === empty);
     if (admin === empty || admin === undefined) {
       next();
@@ -39,12 +40,14 @@ const adminController = {
       res.render("addCoffe.ejs", {
         adminStyle: "css",
         adminConnected: req.session.admin,
+        carac,
       });
     }
   },
   async AddCoffee(req, res) {
     const coffee = req.body;
-
+    const carac = await dataMapper.allCarac();
+    console.log(parseInt(req.body.carac));
     console.log(req.file);
     if (
       coffee.nom === "" ||
@@ -58,9 +61,11 @@ const adminController = {
       res.render("addCoffe.ejs", {
         adminConnected: req.session.admin,
         errorMessage: "veuillez remplir tous les champs",
+        carac,
       });
     } else {
-      dataMapper.addCoffe(coffee);
+      const ref = parseInt(req.body.carac);
+      dataMapper.addCoffe(coffee, ref);
       res.render("addCoffe.ejs", {
         adminConnected: req.session.admin,
         successMessage: `Café ajouté allez le voir`,

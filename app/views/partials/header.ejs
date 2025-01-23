@@ -54,6 +54,9 @@
         <ul class="menu_container">
           
           <% if (locals.adminConnected) { %>
+            <li class="menu_item"><a class="menu_link" href="/admin/addCoffee">Ajouter un café</a></li>
+          <li class="menu_item"><a class="menu_link" href="/admin/suppCoffee">Supprimer un café</a></li>
+          <li class="menu_item"><a class="menu_link" href="/admin/updCoffee">Modifier un café</a></li>
           <% } else { %><li class="menu_item"><a class="menu_link" href="/catalogue">Catalogue</a></li>
           <li class="menu_item"><a class="menu_link" href="/qui_sommes_nous">Qui sommes nous ?</a></li>
           <% } %>
@@ -68,8 +71,13 @@
       </svg>
     </button></div>
    <ul class="burger">
-          <li class="burger_item"><a class="burger_link" href="/catalogue">Catalogue</a></li>
+          <% if (locals.adminConnected) { %>
+            <li class="burger_item"><a class="burger_link" href="/admin/addCoffee">Ajouter un café</a></li>
+          <li class="burger_item"><a class="burger_link" href="/admin/suppCoffee">Supprimer un café</a></li>
+          <li class="burger_item"><a class="burger_link" href="/admin/updCoffee">Modifier un café</a></li>
+          <% } else { %><li class="burger_item"><a class="burger_link" href="/catalogue">Catalogue</a></li>
           <li class="burger_item"><a class="burger_link" href="/qui_sommes_nous">Qui sommes nous ?</a></li>
+          <% } %>
         </ul>   </div>
 
     </header>
