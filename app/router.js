@@ -7,6 +7,7 @@ import adminController from "./controller/admin_controller.js";
 import multer from "multer";
 import path from "path";
 
+// * parametrage de multer
 const storage = multer.diskStorage({
   destination:
     "/var/www/html/sigurd/projet MVC/S09-Ocoffee-kurogami20/public/assets/coffees",
@@ -19,6 +20,7 @@ const upload = multer({
   storage: storage,
 });
 
+// *les routes
 const router = express.Router();
 
 router.use(session);

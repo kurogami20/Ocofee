@@ -3,6 +3,7 @@ import dataMapper from "../models/dataMapper.js";
 const mainController = {
   async displayHome(req, res) {
     const coffee = await dataMapper.newCoffes();
+
     res.render("index.ejs", {
       indexStyle: "css",
       coffee,

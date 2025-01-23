@@ -1,12 +1,13 @@
 import dataMapper from "../models/dataMapper.js";
 
 const adminController = {
+  // *affichage de la page de connexion
   displayAdmin(req, res) {
     res.render("admin.ejs", {
       adminStyle: "css",
     });
   },
-
+  // *On gère la connexion de l'admin
   async handleAdmin(req, res) {
     const userCo = req.body;
 
@@ -27,6 +28,7 @@ const adminController = {
     }
   },
 
+  // * on affiche la page pour ajouter des café
   displayAddCoffee(req, res, next) {
     const empty = "";
     const admin = req.session.admin;
@@ -61,7 +63,8 @@ const adminController = {
       dataMapper.addCoffe(coffee);
       res.render("addCoffe.ejs", {
         adminConnected: req.session.admin,
-        successMessage: "Café ajouté",
+        successMessage: `Café ajouté allez le voir`,
+        address: `/produit/${coffee.reference}`,
       });
     }
   },
