@@ -43,7 +43,7 @@ const dataMapper = {
     );
     return admin.rows[0];
   },
-  async addCoffe(coffee) {
+  async addCoffe(coffee, ref) {
     const newCoffee = await data.query(
       `INSERT INTO cafes (nom,description,reference,origine,prix_kilo,id_caracteristique,disponible) VALUES
       ($1,$2,$3,$4,$5,$6,true)
@@ -58,6 +58,11 @@ const dataMapper = {
       ]
     );
     return newCoffee;
+  },
+
+  async deleteCoffee(ref) {
+    const coffee = data.query(`DELETE FROM cafes WHERE reference = $1`, [ref]);
+    return coffee;
   },
 };
 

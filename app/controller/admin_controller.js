@@ -24,7 +24,7 @@ const adminController = {
     } else {
       req.session.admin = [];
       req.session.admin.push(admin);
-      res.redirect("/admin/addCoffee");
+      res.redirect("/");
     }
   },
 
@@ -44,6 +44,7 @@ const adminController = {
       });
     }
   },
+  // *gère l'ajout de café
   async AddCoffee(req, res) {
     const coffee = req.body;
     const carac = await dataMapper.allCarac();
@@ -64,15 +65,35 @@ const adminController = {
         carac,
       });
     } else {
-      const ref = parseInt(req.body.carac);
-      dataMapper.addCoffe(coffee, ref);
+      const ref = req.body.carac;
+      dataMapper.addCoffe(coffee, parseInt(ref));
       res.render("addCoffe.ejs", {
         adminConnected: req.session.admin,
+        carac,
         successMessage: `Café ajouté allez le voir`,
         address: `/produit/${coffee.reference}`,
       });
     }
   },
+
+  async displaySuppCoffee(req, res) {
+    const coffees = await dataMapper.allCoffee();
+
+    res.render("suppCoffee.ejs", {
+      coffees,
+      adminConnected: req.session.admin,
+    });
+  },
+
+  async suppCoffee(req, res) {
+    const ref = req.params.ref;
+    console.log(parseInt(ref));
+    const coffees = await dataMapper.allCoffee();
+    dataMapper.deleteCoffee(parseInt(ref));
+    res.redirect("/admin/suppCoffee");
+  },
+
+  // *déconnexion
   logout(req, res) {
     req.session.admin = "";
     res.redirect("/");

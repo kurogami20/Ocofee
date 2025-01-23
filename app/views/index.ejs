@@ -3,6 +3,9 @@
 <body>
   <main class="main">
     <div class="container">
+      <% if (locals.adminConnected) { %>
+      <h2>Bienvenue administrateur</h2>
+      <% } else{%>
       <section class="upper_section">
         <div class="upper_section_left">
           <h2 class="index_title">Le meilleur du café</h2>
@@ -51,6 +54,7 @@
           <% }) %>
         </div>
       </section>
+      <% } %>
     </div>
   </main>
 </body>

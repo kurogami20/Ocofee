@@ -3,11 +3,18 @@ import dataMapper from "../models/dataMapper.js";
 const mainController = {
   async displayHome(req, res) {
     const coffee = await dataMapper.newCoffes();
-
-    res.render("index.ejs", {
-      indexStyle: "css",
-      coffee,
-    });
+    if (req.session.admin === "") {
+      res.render("index.ejs", {
+        indexStyle: "css",
+        coffee,
+      });
+    } else {
+      res.render("index.ejs", {
+        indexStyle: "css",
+        coffee,
+        adminConnected: req.session.admin,
+      });
+    }
   },
   async displayBrowse(req, res) {
     const carac = await dataMapper.allCarac();
@@ -31,9 +38,7 @@ const mainController = {
       });
     }
   },
-  displayNewBrowse(req, res) {
-    const id = req.query.carac;
-  },
+
   displayWho(req, res) {
     res.render("who_page.ejs", {
       whoStyle: "css",

@@ -1,0 +1,22 @@
+<%- include('./partials/header') %>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <h2>Supprimez un café</h2>
+      <ul class="coffees_list">
+        <% coffees.forEach(coffee => { %>
+        <li class="coffee_item">
+          <%= coffee.nom %>
+          <button class="button_site">
+            <a href="/suppCoffee/<%= coffee.reference %>">Supprimer</a>
+          </button>
+        </li>
+        <% }) %>
+      </ul>
+      <strong>Attention la suppression est instantané et définitive</strong>
+    </div>
+  </main>
+</body>
+
+<%- include('./partials/footer') %>

@@ -5,7 +5,7 @@ const storage = multer.diskStorage({
   destination:
     "/var/www/html/sigurd/projet MVC/S09-Ocoffee-kurogami20/public/assets/coffees",
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, `${req.body.reference}.png`);
   },
 });
 const upload = multer({

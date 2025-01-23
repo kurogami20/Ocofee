@@ -15,7 +15,7 @@ router.get("/", mainController.displayHome);
 
 // *browsing_page
 router.get("/catalogue", mainController.displayBrowse);
-router.post("/catalogue", mainController.displayNewBrowse);
+
 // *product page
 router.get("/produit/:id", products.displayProduct);
 
@@ -34,6 +34,9 @@ router.post(
   upload.single("coffee_img"),
   adminController.AddCoffee
 );
+// *delete coffee
+router.get("/admin/suppCoffee", adminController.displaySuppCoffee);
+router.get("/suppCoffee/:ref", adminController.suppCoffee);
 
 router.use(error404);
 export default router;

@@ -2,6 +2,9 @@
   align-self: flex-end;
   padding-bottom: 1rem;
 }
+.button_select {
+  padding: 0;
+}
 .select {
   background: var(--main_color);
   color: var(--main_color2);
@@ -9,6 +12,10 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 15px;
+  padding: 0.5rem 0.8rem;
 }
 .select:focus-visible {
   border: none;
