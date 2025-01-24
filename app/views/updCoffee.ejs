@@ -60,6 +60,28 @@
             >
           </label>
         </fieldset>
+
+        <fieldset>
+          <p>Disponibilité</p>
+          <% if (!coffee.disponible) { %>
+          <div>
+            <input type="radio" id="true" name="dispo" value="true" />
+            <label for="true">Disponible</label>
+
+            <input type="radio" id="false" name="dispo" value="false" checked />
+            <label for="false">Non disponible</label>
+          </div>
+          <% } else {%>
+          <div>
+            <input type="radio" id="true" name="dispo" value="true" checked />
+            <label for="true">Disponible</label>
+
+            <input type="radio" id="false" name="dispo" value="false" />
+            <label for="false">Non disponible</label>
+          </div>
+          <% } %>
+        </fieldset>
+
         <fieldset class="fieldset">
           <label for="prix_kilo">
             Prix au kilo
@@ -82,11 +104,13 @@
             />
           </label>
         </fieldset>
+
         <fieldset>
           <img
             src="../../assets/coffees/<%= coffee.reference %>.png"
             alt="Image acuelle"
             title="image actuelle"
+            class="img_upd"
           />
           <label for="">
             Image du café

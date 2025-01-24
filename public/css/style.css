@@ -2,6 +2,14 @@
   --main_color: #f7dbb9;
   --main_color2: #3e1e04;
 }
+textarea {
+  width: 100%;
+}
+.img_upd {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
 * {
   font-family: sans-serif;
 }

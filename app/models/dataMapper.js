@@ -71,10 +71,10 @@ const dataMapper = {
     const coffee = data.query(`DELETE FROM cafes WHERE reference = $1`, [ref]);
     return coffee;
   },
-  async updCoffe(coffee, carac) {
+  async updCoffe(coffee, carac, dispo) {
     const newCoffee = await data.query(
-      `UPDATE cafes SET nom = $1, description=$2, origine=$3, prix_kilo=$4, id_caracteristique=$5
-      WHERE reference = $6
+      `UPDATE cafes SET nom = $1, description=$2, origine=$3, prix_kilo=$4, id_caracteristique=$5, disponible=$6
+      WHERE reference = $7;
       `,
       [
         coffee.nom,
@@ -82,6 +82,7 @@ const dataMapper = {
         coffee.origine,
         coffee.prix_kilo,
         carac,
+        dispo,
         coffee.reference,
       ]
     );

@@ -146,8 +146,16 @@ const adminController = {
   UpdCoffee(req, res) {
     const coffee = req.body;
     console.log(coffee);
+    let disponibilite;
     const carac = coffee.carac;
-    dataMapper.updCoffe(coffee, parseInt(carac));
+    if (coffee.dispo === "false") {
+      disponibilite = false;
+      dataMapper.updCoffe(coffee, parseInt(carac), disponibilite);
+    } else {
+      disponibilite = true;
+      dataMapper.updCoffe(coffee, parseInt(carac), disponibilite);
+    }
+
     res.redirect("/admin/updCoffee");
   },
 
