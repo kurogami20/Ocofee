@@ -6,7 +6,7 @@ const products = {
     // on récupère la reférence dans le parametre
     const ref = req.params.id;
 
-    // On vérifie si la fonction du datamapper fonctionne si ça ne fonctionne pas on envoie la 404
+    // On vérifie si la fonction du datamapper fonctionne si ça ne fonctionne pas on envoie la 500
     try {
       // on envoie ref dans la fonction du datamapper qui recupère le café par la reférence
       const coffeeSelected = await dataMapper.coffeeByRef(ref);
@@ -16,7 +16,7 @@ const products = {
         productStyle: "css",
       });
     } catch (error) {
-      next();
+      res.status(500).render("error/500.ejs");
     }
   },
 };

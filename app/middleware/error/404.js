@@ -1,5 +1,5 @@
 function error404(req, res) {
-  res.render("404.ejs", {
+  res.status(404).render("error/404.ejs", {
     error404Style: "css",
   });
 }
