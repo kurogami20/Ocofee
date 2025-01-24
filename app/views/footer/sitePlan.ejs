@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<body>
+  <main class="main">
+    <div class="container">
+      <h2>Plan du site</h2>
+      <ul>
+        <li>
+          <a href="/">Accueil</a>
+          <ul>
+            <% newCoffe.forEach(cof => { %>
+            <li><a href="/produit/<%= cof.reference %>"><%= cof.nom %></a></li>
+            <% }) %>
+          </ul>
+        </li>
+        <li>
+          <a href="/catalogue">Catalogue</a>
+          <ul>
+            <% coffee.forEach(cof => { %>
+            <li><a href="/produit/<%= cof.reference %>"><%= cof.nom %></a></li>
+            <% }) %>
+          </ul>
+        </li>
+        <li><a href="/qui_sommes_nous">Qui sommes nous</a></li>
+      </ul>
+    </div>
+  </main>
+</body>
+<%- include('../partials/footer') %>

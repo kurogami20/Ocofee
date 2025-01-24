@@ -47,9 +47,10 @@ router.post(
   upload.single("coffee_img"),
   adminController.UpdCoffee
 );
-
-// *contact
+// *footer
+// contact
 router.get("/contact", footer.displaysContact);
-
+// plan du site
+router.get("/plan_du_site", footer.displayMap);
 router.use(error404);
 export default router;
