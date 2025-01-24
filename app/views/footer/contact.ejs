@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+<body>
+  <main class="main">
+    <div class="container">
+      <form action="" method="post">
+        <h2>Contactez nous</h2>
+        <fieldset class="fieldset">
+          <legend>Votre addresse mail</legend>
+          <input type="email" name="mail" id="" />
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Contenu de votre demande</legend>
+          <textarea name="" id="" cols="30" rows="5"></textarea>
+        </fieldset>
+        <button class="button_site" type="submit">Envoyer</button>
+      </form>
+      <h2>Retrouvez nous</h2>
+      <!-- <div class="map" id="map"></div> -->
+      <iframe
+        class="map"
+        width="100%"
+        height="500px"
+        frameborder="0"
+        allowfullscreen
+        allow="geolocation"
+        src="//umap.openstreetmap.fr/fr/map/ocloque_1168790?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=false&searchControl=false&tilelayersControl=null&embedControl=false&datalayersControl=false&onLoadPanel=none&captionBar=false&captionMenus=false&fullscreenControl=false&captionControl=false"
+      ></iframe>
+      <p>
+        <a
+          target="_blank"
+          href="//umap.openstreetmap.fr/fr/map/new/?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=false&tilelayersControl=null&embedControl=false&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=false&fullscreenControl=false&captionControl=false"
+          >Voir en plein écran</a
+        >
+      </p>
+    </div>
+  </main>
+</body>
+<%- include('../partials/footer') %>

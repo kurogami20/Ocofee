@@ -3,7 +3,7 @@ import dataMapper from "../models/dataMapper.js";
 const adminController = {
   // *affichage de la page de connexion
   displayAdmin(req, res) {
-    res.render("admin.ejs", {
+    res.render("admin/admin.ejs", {
       adminStyle: "css",
     });
   },
@@ -14,11 +14,11 @@ const adminController = {
     const admin = await dataMapper.admin(userCo.name, userCo.password);
 
     if ((userCo.name === "") === "" || userCo.password === "") {
-      res.render("admin.ejs", {
+      res.render("admin/admin.ejs", {
         errorMessage: "veuillez remplir tous les champs",
       });
     } else if (admin === "" || admin === undefined) {
-      res.render("admin.ejs", {
+      res.render("admin/admin.ejs", {
         errorMessage: "Mot de passe ou nom d'utilisateur incorrect",
       });
     } else {
@@ -37,7 +37,7 @@ const adminController = {
     if (admin === empty || admin === undefined) {
       next();
     } else {
-      res.render("addCoffe.ejs", {
+      res.render("admin/addCoffe.ejs", {
         adminStyle: "css",
         adminConnected: req.session.admin,
         carac,
@@ -59,7 +59,7 @@ const adminController = {
       coffee.caracteristique === "" ||
       coffee.coffee_img === ""
     ) {
-      res.render("addCoffe.ejs", {
+      res.render("admin/addCoffe.ejs", {
         adminConnected: req.session.admin,
         errorMessage: "veuillez remplir tous les champs",
         carac,
@@ -67,7 +67,7 @@ const adminController = {
     } else {
       const ref = req.body.carac;
       dataMapper.addCoffe(coffee, parseInt(ref));
-      res.render("addCoffe.ejs", {
+      res.render("admin/addCoffe.ejs", {
         adminConnected: req.session.admin,
         carac,
         successMessage: `Café ajouté allez le voir`,
@@ -84,7 +84,7 @@ const adminController = {
     if (admin === empty || admin === undefined) {
       next();
     } else {
-      res.render("suppCoffee.ejs", {
+      res.render("admin/suppCoffee.ejs", {
         coffees,
         adminConnected: req.session.admin,
       });
@@ -96,7 +96,7 @@ const adminController = {
     console.log(parseInt(ref));
     const coffees = await dataMapper.allCoffee();
     dataMapper.deleteCoffee(parseInt(ref));
-    res.redirect("/admin/suppCoffee");
+    res.redirect("admin/suppCoffee");
   },
 
   // *modification
@@ -114,7 +114,7 @@ const adminController = {
         const coffee = await dataMapper.coffeeByRef(ref);
 
         if (coffee === undefined) {
-          res.render("updCoffee.ejs", {
+          res.render("admin/updCoffee.ejs", {
             coffees,
             coffee,
             adminConnected: req.session.admin,
@@ -125,7 +125,7 @@ const adminController = {
             coffee.id_caracteristique
           );
 
-          res.render("updCoffee.ejs", {
+          res.render("admin/updCoffee.ejs", {
             coffees,
             coffee,
             adminConnected: req.session.admin,
@@ -134,7 +134,7 @@ const adminController = {
           });
         }
       } else {
-        res.render("updCoffee.ejs", {
+        res.render("admin/updCoffee.ejs", {
           coffees,
           adminConnected: req.session.admin,
           carac,

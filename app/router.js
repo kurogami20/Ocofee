@@ -5,6 +5,8 @@ import error404 from "./middleware/error/404.js";
 import session from "./middleware/admin_session.js";
 import adminController from "./controller/admin_controller.js";
 import upload from "./middleware/uloadMulter.js";
+import footer from "./controller/footerController.js";
+
 // *les routes
 const router = express.Router();
 
@@ -45,6 +47,9 @@ router.post(
   upload.single("coffee_img"),
   adminController.UpdCoffee
 );
+
+// *contact
+router.get("/contact", footer.displaysContact);
 
 router.use(error404);
 export default router;
