@@ -1,9 +1,9 @@
-# O'Coffee
+Développement d'une intégration d'un site vitrine responsive.
 
-## Information du projet
+Développement d'une interface aux contenus générés dynamiquement.
 
-[Le projet](./docs/demande-client/)
+Mise en place et connexion à une base de données.
 
-## Remarques pédagogiques et rendus
+Développement de composants d'accès aux données.
 
-[Recommandations](./docs/recommandations/)
+Développement d'une architecture MVC avec moteur de rendu côté serveur.
